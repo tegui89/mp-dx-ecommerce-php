@@ -9,7 +9,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 // Agrega credenciales
 MercadoPago\SDK::setAccessToken($_ENV['ACCESS_TOKEN']);
-
+MercadoPago\SDK::setIntegratorId($_ENV['INTEGRATOR_ID']);
 $installment = 6;
 
 // Creamos un objeto de preferencia
@@ -63,7 +63,6 @@ $preference->auto_return = "approved";
 // setup additional info
 $preference->external_reference= 'matiasgallastegui89@gmail.com';
 $preference->statement_descriptor = 'Tienda-Azul';
-$preference->additional_info = 'dev_24c65fb163bf11ea96500242ac130004';
 
 $preference->save();
 echo $preference->id;

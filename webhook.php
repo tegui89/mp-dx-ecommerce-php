@@ -6,11 +6,6 @@ $dotenv->load();
 
 MercadoPago\SDK::setAccessToken($_ENV['ACCESS_TOKEN']);
 
-if (!isset($_GET['topic'])) {
-    http_response_code(500);
-    exit;
-}
-
 try {
     $payment = MercadoPago\Payment::find_by_id($_GET['id']);
 
