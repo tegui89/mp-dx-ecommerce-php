@@ -1,14 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-// SDK de Mercado Pago
-require __DIR__ .  '/vendor/autoload.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-
-$dotenv->load();
-
-?>
 
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,17 +11,9 @@ $dotenv->load();
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"
-    >
-    </script>
+        crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://www.mercadopago.com/v2/security.js" view="failure"></script>
 
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
@@ -58,41 +39,15 @@ $dotenv->load();
             color: #fff;
             padding: 16px 40px;
         }
-        .loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255,255,255,0.8); /* Fondo blanco con 80% de opacidad */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000; /* Esto asegura que el loader esté en la parte superior de otros elementos */
-        }
-
-        .loader {
-            border: 10px solid #f3f3f3;
-            border-top: 10px solid #2C3E50; /* Color de borde azul oscuro */
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
     <style type="text/css"> @keyframes loading-rotate { 100% { transform: rotate(360deg); } } @keyframes loading-dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 100, 200; stroke-dashoffset: -20px; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } } @keyframes loading-fade-in { from { opacity: 0; } to { opacity: 1; } } .mp-spinner { position: absolute; top: 100px; left: 50%; font-size: 70px; margin-left: -35px; animation: loading-rotate 2.5s linear infinite; transform-origin: center center; width: 1em; height: 1em; } .mp-spinner-path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: loading-dash 1.5s ease-in-out infinite; stroke-linecap: round; stroke-width: 2px; stroke: #009ee3; } </style><style type="text/css"> .mercadopago-button { padding: 0 1.7142857142857142em; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.875em; line-height: 2.7142857142857144; background: #009ee3; border-radius: 0.2857142857142857em; color: #fff; cursor: pointer; border: 0; } </style><style type="text/css"> @keyframes loading-rotate { 100% { transform: rotate(360deg); } } @keyframes loading-dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 100, 200; stroke-dashoffset: -20px; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } } @keyframes loading-fade-in { from { opacity: 0; } to { opacity: 1; } } .mp-spinner { position: absolute; top: 100px; left: 50%; font-size: 70px; margin-left: -35px; animation: loading-rotate 2.5s linear infinite; transform-origin: center center; width: 1em; height: 1em; } .mp-spinner-path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: loading-dash 1.5s ease-in-out infinite; stroke-linecap: round; stroke-width: 2px; stroke: #009ee3; } </style><style type="text/css"> .mercadopago-button { padding: 0 1.7142857142857142em; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.875em; line-height: 2.7142857142857144; background: #009ee3; border-radius: 0.2857142857142857em; color: #fff; cursor: pointer; border: 0; } </style><style type="text/css"> @keyframes loading-rotate { 100% { transform: rotate(360deg); } } @keyframes loading-dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 100, 200; stroke-dashoffset: -20px; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } } @keyframes loading-fade-in { from { opacity: 0; } to { opacity: 1; } } .mp-spinner { position: absolute; top: 100px; left: 50%; font-size: 70px; margin-left: -35px; animation: loading-rotate 2.5s linear infinite; transform-origin: center center; width: 1em; height: 1em; } .mp-spinner-path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: loading-dash 1.5s ease-in-out infinite; stroke-linecap: round; stroke-width: 2px; stroke: #009ee3; } </style><style type="text/css"> .mercadopago-button { padding: 0 1.7142857142857142em; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.875em; line-height: 2.7142857142857144; background: #009ee3; border-radius: 0.2857142857142857em; color: #fff; cursor: pointer; border: 0; } </style><style type="text/css"> @keyframes loading-rotate { 100% { transform: rotate(360deg); } } @keyframes loading-dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 100, 200; stroke-dashoffset: -20px; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } } @keyframes loading-fade-in { from { opacity: 0; } to { opacity: 1; } } .mp-spinner { position: absolute; top: 100px; left: 50%; font-size: 70px; margin-left: -35px; animation: loading-rotate 2.5s linear infinite; transform-origin: center center; width: 1em; height: 1em; } .mp-spinner-path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: loading-dash 1.5s ease-in-out infinite; stroke-linecap: round; stroke-width: 2px; stroke: #009ee3; } </style><style type="text/css"> .mercadopago-button { padding: 0 1.7142857142857142em; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.875em; line-height: 2.7142857142857144; background: #009ee3; border-radius: 0.2857142857142857em; color: #fff; cursor: pointer; border: 0; } </style><style type="text/css"> @keyframes loading-rotate { 100% { transform: rotate(360deg); } } @keyframes loading-dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 100, 200; stroke-dashoffset: -20px; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } } @keyframes loading-fade-in { from { opacity: 0; } to { opacity: 1; } } .mp-spinner { position: absolute; top: 100px; left: 50%; font-size: 70px; margin-left: -35px; animation: loading-rotate 2.5s linear infinite; transform-origin: center center; width: 1em; height: 1em; } .mp-spinner-path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: loading-dash 1.5s ease-in-out infinite; stroke-linecap: round; stroke-width: 2px; stroke: #009ee3; } </style><style type="text/css"> .mercadopago-button { padding: 0 1.7142857142857142em; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.875em; line-height: 2.7142857142857144; background: #009ee3; border-radius: 0.2857142857142857em; color: #fff; cursor: pointer; border: 0; } </style><style type="text/css"> @keyframes loading-rotate { 100% { transform: rotate(360deg); } } @keyframes loading-dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 100, 200; stroke-dashoffset: -20px; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } } @keyframes loading-fade-in { from { opacity: 0; } to { opacity: 1; } } .mp-spinner { position: absolute; top: 100px; left: 50%; font-size: 70px; margin-left: -35px; animation: loading-rotate 2.5s linear infinite; transform-origin: center center; width: 1em; height: 1em; } .mp-spinner-path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: loading-dash 1.5s ease-in-out infinite; stroke-linecap: round; stroke-width: 2px; stroke: #009ee3; } </style><style type="text/css"> .mercadopago-button { padding: 0 1.7142857142857142em; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.875em; line-height: 2.7142857142857144; background: #009ee3; border-radius: 0.2857142857142857em; color: #fff; cursor: pointer; border: 0; } </style></head>
+
+
 
 <body class="as-theme-light-heroimage">
 
 <div class="stack">
-    <div class="loader-wrapper">
-        <div class="loader"></div>
-    </div>
+
     <div class="as-search-wrapper" role="main">
         <div class="as-navtuck-wrapper">
             <div class="as-l-fullwidth  as-navtuck" data-events="event52">
@@ -111,6 +66,7 @@ $dotenv->load();
             </div>
         </div>
         <div class="as-search-results as-filter-open as-category-landing as-desktop" id="as-search-results">
+
             <div id="accessories-tab" class="as-accessories-details">
                 <div class="as-accessories" id="as-accessories">
                     <div class="as-accessories-header">
@@ -121,13 +77,11 @@ $dotenv->load();
                     <div class="as-searchnav-placeholder" style="height: 77px;">
                         <div class="row as-search-navbar" id="as-search-navbar" style="width: auto;">
                             <div class="as-accessories-filter-tile column large-6 small-3">
-
-                                <button class="as-filter-button" aria-expanded="true" aria-controls="as-search-filters" type="button">
-                                    <h2 class=" as-filter-button-text">
-                                        Smartphones
-                                    </h2>
-                                </button>
+                                <h1 class=" as-filter-button-text">
+                                   Ups!!! Ocurrio un error al finalizar la compra...
+                                </h1>
                             </div>
+
                         </div>
                     </div>
                     <div class="as-accessories-results  as-search-desktop">
@@ -149,72 +103,11 @@ $dotenv->load();
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="as-producttile-info" style="float:left;min-height: 168px;">
-                                <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
-                                    <div class="as-producttile-title">
-                                        <h3 class="as-producttile-name">
-                                            <p class="as-producttile-tilelink">
-                                                <span data-ase-truncate="2"><?php echo $_POST['title'] ?></span>
-                                            </p>
-                                        </h3>
-                                    </div>
-                                    <h3 >
-                                        <?php echo "$" . number_format($_POST['price'], 2, ',', '.') ?>
-                                    </h3>
-                                    <h3 >
-                                        <?php echo 'Cantidad: ' . $_POST['unit'] ?>
-                                    </h3>
-                                </div>
-                                <!-- Modal -->
-                                <div id="wallet_container"></div>
+                                <div class="as-producttile-titlepricewraper" style="min-height: 128px;"></div>
                             </div>
-                            <script>
-                                // No es necesario incluir el security.js ya que implementé SDK js
-                                $(document).ready(function(){
-                                    var dataToSend = 'img=' + encodeURIComponent('<?php echo $_POST['img']; ?>') +
-                                        '&title=' + encodeURIComponent('<?php echo $_POST['title']; ?>') +
-                                        '&price=' + encodeURIComponent('<?php echo $_POST['price']; ?>') +
-                                        '&unit=' + encodeURIComponent('<?php echo $_POST['unit']; ?>');
-
-                                    $.ajax({
-                                        type: "POST",
-                                        url: 'preference.php',
-                                        data: dataToSend,
-                                        success: function(response) {
-                                            const mp = new MercadoPago('<?php echo $_ENV['PUBLIC_KEY'] ?>', {
-                                                locale: 'es-AR',
-                                                advancedFraudPrevention: true
-                                            });
-
-                                            mp.bricks().create('wallet', 'wallet_container', {
-                                                initialization: {
-                                                    preferenceId: response,
-                                                    redirectMode: 'modal'
-                                                },
-                                                customization: {
-                                                    texts: {
-                                                        action: 'pay',
-                                                        valueProp: ''
-                                                    }
-                                                },
-                                                callbacks: {
-                                                    onReady: function() {
-                                                        // Ocultar el loader cuando el botón esté listo
-                                                        document.querySelector('.loader-wrapper').style.display = 'none';
-                                                    },
-                                                    onError: function(error) {
-                                                        console.error("Error en MercadoPago", error);
-                                                    }
-                                                }
-                                            });
-                                        },
-                                        error: function(){
-                                            alert('Ha ocurrido un error al procesar el pago.');
-                                        }
-                                    });
-                                });
-                            </script>
                         </div>
                     </div>
                 </div>

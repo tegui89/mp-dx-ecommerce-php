@@ -1,5 +1,9 @@
 {
-    "name": "mp-ecommerce-php",
+    "name": "tegui89/mp-ecommerce-php",
     "type": "project",
-    "require": {}
+    "require": {
+        "mercadopago/dx-php": "^2.6",
+        "vlucas/phpdotenv": "^5.5",
+        "ext-json": "*"
+    }
 }
